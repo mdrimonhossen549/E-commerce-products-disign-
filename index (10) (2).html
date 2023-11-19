@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Design with Sliding Effect</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .header {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+    }
+
+    #header1 {
+      background-color: #4CAF50;
+      height:80vh;
+    }
+
+    #header2 {
+      background-color: #2196F3;
+    }
+
+    #header3 {
+      background-color: #FF9800;
+    }
+
+    .btn-container {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .btn {
+      background-color: #555;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container" id="headerContainer">
+      <div class="header" id="header1">Header 1</div>
+      <div class="header" id="header2">Header 2</div>
+      <div class="header" id="header3">Header 3</div>
+    </div>
+    <div class="btn-container">
+      <button class="btn" onclick="changeHeader(-1)">Previous</button>
+      <button class="btn" onclick="changeHeader(1)">Next</button>
+    </div>
+  </header>
+
+  <script>
+    let currentHeader = 1;
+
+    function changeHeader(direction) {
+      const container = document.getElementById('headerContainer');
+      const headers = document.querySelectorAll('.header');
+      currentHeader += direction;
+
+      if (currentHeader > headers.length) {
+        currentHeader = 1;
+      } else if (currentHeader < 1) {
+        currentHeader = headers.length;
+      }
+
+      const translateValue = -(currentHeader - 1) * 100;
+      container.style.transform = `translateX(${translateValue}%)`;
+    }
+  </script>
+
+</body>
+</html>
