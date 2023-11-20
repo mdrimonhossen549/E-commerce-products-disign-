@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Slider</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slider-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .slide1{
+      height:80vh;
+      background-color: green;
+    }
+    .slide2{
+      height:80vh;
+      background-color: violet;
+    }
+    .slide3{
+      height:80vh;
+      background-color:#874764 ;
+    }
+
+    /* Optional: Add styles to make it visually appealing */
+    .slider-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider-wrapper">
+    <div class="slider-item slide1">
+     <h1>Header 1</h1>
+     <p>Welcome to Gboard clipboard, any text you copy will be saved here.</p>
+    </div>
+    <div class="slider-item slide2">
+     <h1>Header 2</h1>
+     <p>Welcome to Gboard clipboard, any text you copy will be saved here.</p>
+    </div>
+    <div class="slider-item slide3">
+     <h1>Header 3</h1>
+     <p>Welcome to Gboard clipboard, any text you copy will be saved here.</p>
+    </div>
+    <!-- Add more slides as needed -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const sliderItems = document.querySelectorAll('.slider-item');
+
+    let currentIndex = 0;
+
+    function slideLeft() {
+      currentIndex = (currentIndex + 1) % sliderItems.length;
+      const translateValue = -currentIndex * 100 + '%';
+      sliderWrapper.style.transform = 'translateX(' + translateValue + ')';
+    }
+
+    setInterval(slideLeft, 2000); // Change the interval time as needed (2 seconds in this case)
+  });
+</script>
+
+</body>
+</html>
