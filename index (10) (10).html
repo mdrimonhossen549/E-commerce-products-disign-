@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: background-color 1s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header" id="header">Slide Header</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Array of colors
+      const colors = ['red', 'blue', 'yellow'];
+      
+      // Function to update header color
+      function updateHeaderColor() {
+        const header = document.getElementById('header');
+        const currentColor = header.style.backgroundColor;
+        const currentIndex = colors.indexOf(currentColor);
+        const nextIndex = (currentIndex + 1) % colors.length;
+        const nextColor = colors[nextIndex];
+        
+        header.style.backgroundColor = nextColor;
+
+        // Call the function again after 2 seconds
+        setTimeout(updateHeaderColor, 2000);
+      }
+
+      // Call the function initially
+      setTimeout(updateHeaderColor, 2000);
+    });
+  </script>
+
+</body>
+</html>
