@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   .products-container {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+      padding:10px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    @media (max-width:768px){
+         .products-container{
+            flex-direction: column;
+         }
+    }
+  </style>
+  <title>Product Grid</title>
+</head>
+<body>
+  <div class="products-container"></div>
+  <script>
+    const products = [
+      { name: 'Product 1', image: 'https://placekitten.com/350/201', price: '$19.99' },
+      { name: 'Product 2', image: 'https://placekitten.com/350/202', price: '$29.99' },
+      { name: 'Product 3', image: 'https://placekitten.com/350/203', price: '$39.99' },
+      { name: 'Product 4', image: 'https://placekitten.com/350/204', price: '$49.99' },
+      { name: 'Product 5', image: 'https://placekitten.com/350/205', price: '$59.99' },
+      { name: 'Product 6', image: 'https://placekitten.com/350/206', price: '$69.99' },
+      { name: 'Product 7', image: 'https://placekitten.com/350/207', price: '$79.99' },
+      { name: 'Product 8', image: 'https://placekitten.com/350/222', price: '$89.99' },
+      { name: 'Product 9', image: 'https://placekitten.com/350/209', price: '$99.99' },
+      { name: 'Product 10', image: 'https://placekitten.com/350/210', price: '$109.99' },
+      { name: 'Product 11', image: 'https://placekitten.com/350/231', price: '$119.99' },
+      { name: 'Product 12', image: 'https://placekitten.com/350/213', price: '$129.99' },
+      { name: 'Product 13', image: 'https://placekitten.com/350/217', price: '$139.99' },
+      { name: 'Product 14', image: 'https://placekitten.com/350/218', price: '$149.99' },
+      { name: 'Product 15', image: 'https://placekitten.com/350/227', price: '$159.99' },
+      { name: 'Product 16', image: 'https://placekitten.com/350/225', price: '$169.99' },
+      // Add more products as needed
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const productsContainer = document.querySelector('.products-container');
+
+      products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+
+        const imageElement = document.createElement('img');
+        imageElement.src = product.image;
+        imageElement.alt = product.name;
+
+        const nameElement = document.createElement('p');
+        nameElement.textContent = product.name;
+
+        const priceElement = document.createElement('p');
+        priceElement.textContent = product.price;
+
+        productElement.appendChild(imageElement);
+        productElement.appendChild(nameElement);
+        productElement.appendChild(priceElement);
+
+        productsContainer.appendChild(productElement);
+      });
+    });
+  </script>
+</body>
+</html>
