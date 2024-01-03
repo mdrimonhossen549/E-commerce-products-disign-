@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Product Form</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input,
+textarea,
+button,
+#drop-area {
+  margin-top: 8px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post Product</h1>
+    <form id="productForm" action="/submit" method="POST" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required>
+
+      <label for="file">File (Drag & Drop or Browse):</label>
+      <input type="file" id="file" name="file" required>
+
+      <div id="drop-area">
+        <p>Drag & Drop files here</p>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="script.js">document.addEventListener('DOMContentLoaded', () => {
+  const dropArea = document.getElementById('drop-area');
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+  });
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  dropArea.addEventListener('drop', handleDrop, false);
+
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    handleFiles(files);
+  }
+
+  function handleFiles(files) {
+    const fileInput = document.getElementById('file');
+    fileInput.files = files;
+
+    const dropArea = document.getElementById('drop-area');
+    dropArea.innerHTML = `<p>${files[0].name}</p>`;
+  }
+});
+</script>
+</body>
+</html>
