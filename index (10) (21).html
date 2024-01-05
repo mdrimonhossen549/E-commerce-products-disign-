@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      transition: all 0.9s ease;
+    }
+
+    header {
+      background-color: #349873;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .social-icons {
+      display: flex;
+    }
+
+    .social-icons a {
+      color: #333;
+      margin-right: 10px;
+      padding: 10px;
+    }
+
+    /* Default styles */
+    .normal-mode {
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Fun mode styles (modify these as needed) */
+    .drug-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .dauk-mode-icon {
+      float: right;
+      color: #333;
+      font-size: 30px;
+      padding: 5px;
+    }
+  </style>
+  <title>Fun Mode Website</title>
+</head>
+<body class="normal-mode">
+<header>
+  <!-- Fun Mode Button -->
+  <div class="dauk-mode-icon" id="funModeButton" onclick="toggleFunMode()">
+    <i class="fas fa-moon"></i>
+  </div>
+  <div class="logo">
+    <img src="your-logo-image.jpg" alt="Logo">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="social-icons">
+    <a href="#" class="fab fa-facebook"></a>
+    <a href="#" class="fab fa-twitter"></a>
+    <a href="#" class="fab fa-instagram"></a>
+  </div>
+</header>
+
+<!-- Main Content Section -->
+<section id="home">
+  <h1>Welcome to our Makeup and Products Website</h1>
+  <p>Explore our high-quality makeup products and enhance your beauty!</p>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+  <h2>Featured Products</h2>
+  <!-- Add your product listings here -->
+</section>
+
+<!-- About Us Section -->
+<section id="about">
+  <h2>About Us</h2>
+  <p>We are passionate about providing top-notch makeup products that bring out the best in you.</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <!-- Add your contact form or information here -->
+</section>
+
+<h1>Welcome to My Website</h1>
+<p>This is some content on your website.</p>
+
+<script>
+  function toggleFunMode() {
+    const body = document.body;
+    body.classList.toggle('drug-mode');
+  }
+</script>
+
+</body>
+</html>
