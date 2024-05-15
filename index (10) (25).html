@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Animation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        animation: slideRightToLeft 10s linear infinite;
+    }
+    @keyframes slideRightToLeft {
+        0% {
+            left: 100%;
+        }
+        100% {
+            left: -100%;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h1>Animation Right to left</h1>
+        <p>This is a responsive scroll animation moving from right to left.</p>
+    </div>
+</div>
+<script>
+    // Adjust content width on window resize
+    window.addEventListener('resize', function() {
+        var contentWidth = document.querySelector('.content').offsetWidth;
+        var containerWidth = document.querySelector('.container').offsetWidth;
+        if (contentWidth > containerWidth) {
+            document.querySelector('.content').style.left = '100%';
+        } else {
+            document.querySelector('.content').style.left = '50%';
+        }
+    });
+</script>
+</body>
+</html>
