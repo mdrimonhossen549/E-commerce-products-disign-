@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    input[type=text] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    #doctorsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin: 10px;
+      width: calc(100% - 40px);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 600px) {
+      .card {
+        width: calc(50% - 40px);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .card {
+        width: calc(33.33% - 40px);
+      }
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="search-container">
+  <input type="text" id="searchInput" onkeyup="searchDoctors()" placeholder="Search for doctors...">
+</div>
+
+<div id="doctorsContainer">
+  <!-- Doctor cards will be dynamically added here -->
+</div>
+
+<script>
+  // Sample doctor data
+  const doctors = [
+    { name: "Dr. John Doe", specialty: "Cardiologist", location: "New York" },
+    { name: "Dr. Jane Smith", specialty: "Pediatrician", location: "Los Angeles" },
+    { name: "Dr. David Johnson", specialty: "Dermatologist", location: "Chicago" },
+    { name: "Dr. Farjana", specialty: "Gynecologist", location: "Bangladesh" },
+    { name: "Dr. Rasel Rana", specialty: "Neurosurgeon", location: "Los Angeles" },
+    { name: "Dr. Muzaffar", specialty: "Heart Surgery", location: "Chicago" },
+    { name: "Dr. Mohammed Sharafat", specialty: "Hepatology", location: "Bangladesh" },
+    { name: "Dr. Murshid Manjur Kabir Liton", specialty: "Orthopaedic", location: "Dhaka, Bangladesh" },
+    { name: "Dr. Haronur Rashid", specialty: "Dermatologist", location: "Neurologist" },
+    { name: "Dr. M Amjad", specialty: "Hepatology", location: "Bangladesh" },
+    { name: "Dr. Amjad Rhoman", specialty: "Orthopaedic", location: "Dhaka, Bangladesh" },
+    { name: "Dr. John kibria", specialty: "Dermatologist", location: "Neurologist" }
+    
+    // Add more doctors as needed
+  ];
+
+  // Function to display doctor cards
+  function displayDoctors(doctors) {
+    const doctorsContainer = document.getElementById("doctorsContainer");
+    doctorsContainer.innerHTML = "";
+    doctors.forEach(doctor => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <h2>${doctor.name}</h2>
+        <p><strong>Specialty:</strong> ${doctor.specialty}</p>
+        <p><strong>Location:</strong> ${doctor.location}</p>
+      `;
+      doctorsContainer.appendChild(card);
+    });
+  }
+
+  // Initial display of all doctors
+  displayDoctors(doctors);
+
+  // Function to filter doctors based on search input
+  function searchDoctors() {
+    const searchText = document.getElementById("searchInput").value.toLowerCase();
+    const filteredDoctors = doctors.filter(doctor =>
+      doctor.name.toLowerCase().includes(searchText) ||
+      doctor.specialty.toLowerCase().includes(searchText) ||
+      doctor.location.toLowerCase().includes(searchText)
+    );
+    displayDoctors(filteredDoctors);
+  }
+</script>
+
+</body>
+</html>
