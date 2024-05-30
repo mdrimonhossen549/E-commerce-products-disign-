@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Directory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto; /* Corrected margin value */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        #doctorList {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap; /* Added flex-wrap */
+        }
+
+        .doctor-card {
+            width: calc(50% - 20px); /* Initially displays two cards per row */
+            max-width: 300px; /* Added max-width for responsiveness */
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px; /* Increased margin bottom for better separation */
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Added box-sizing */
+        }
+
+        .doctor-card:hover {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .doctor-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .doctor-specialty {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Media queries for responsive layout */
+        @media screen and (min-width: 768px) {
+            .doctor-card {
+                width: calc(25% - 20px); /* Display four cards per row on desktop */
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .doctor-card {
+                width: calc(100% - 20px); /* Display one card per row on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Doctor Directory</h1>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for a doctor...">
+    <div id="doctorList">
+        <!-- Doctor cards will be displayed here -->
+    </div>
+</div>
+
+<script>
+    const doctors = [
+        { name: "Dr. John Doe", specialty: "Cardiologist" },
+        { name: "Dr. Jane Smith", specialty: "Pediatrician" },
+        { name: "Dr. David Johnson", specialty: "Dermatologist" },
+        { name: "Dr. Amzad ", specialty: "Orthopedic" },
+        { name: "Dr. MD Artful Islam", specialty: "neurology" },
+        { name: "Dr. shubhashish Roy", specialty: "orthopaedic" },
+        { name: "Dr. kamrun Nahar", specialty: "gynologist" },
+        { name: "Dr. Noor Jahan", specialty: "hepatology" },
+        { name: "Dr. Farjana Akhtar", specialty: "gynologist" },
+        { name: "Dr. jannatul firdaus", specialty: "Cardiologist" },
+        { name: "Dr. Nasima Akter", specialty: "Pediatrician" },
+        { name: "Dr. Rasel Rana", specialty: "Dermatologist" },
+        
+        // Add more doctors here
+    ];
+
+    const doctorListElement = document.getElementById('doctorList');
+
+    function displayDoctors(doctors) {
+        doctorListElement.innerHTML = '';
+        doctors.forEach(doctor => {
+            const doctorCard = document.createElement('div');
+            doctorCard.classList.add('doctor-card');
+
+            const nameElement = document.createElement('div');
+            nameElement.classList.add('doctor-name');
+            nameElement.textContent = doctor.name;
+
+            const specialtyElement = document.createElement('div');
+            specialtyElement.classList.add('doctor-specialty');
+            specialtyElement.textContent = doctor.specialty;
+
+            doctorCard.appendChild(nameElement);
+            doctorCard.appendChild(specialtyElement);
+
+            doctorListElement.appendChild(doctorCard);
+        });
+    }
+
+    function searchDoctors(query) {
+        const filteredDoctors = doctors.filter(doctor =>
+            doctor.name.toLowerCase().includes(query.toLowerCase())
+        );
+        displayDoctors(filteredDoctors);
+    }
+
+    // Initial display of all doctors
+    displayDoctors(doctors);
+
+    // Event listener for search input
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+        searchDoctors(this.value);
+    });
+</script>
+</body>
+</html>
