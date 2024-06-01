@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cards with Keyboard Shortcuts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:focus {
+            outline: 2px solid #007BFF;
+            transform: scale(1.05);
+        }
+        .product-image {
+            height: 150px;
+            background: #ddd;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 15px;
+        }
+        .product-title {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .product-price {
+            color: #888;
+            margin-bottom: 15px;
+        }
+        .button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 1</div>
+    <div class="product-price">$10.00</div>
+    <button class="button" accesskey="1">Buy Now (Alt+1)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 2</div>
+    <div class="product-price">$20.00</div>
+    <button class="button" accesskey="2">Buy Now (Alt+2)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 3</div>
+    <div class="product-price">$30.00</div>
+    <button class="button" accesskey="3">Buy Now (Alt+3)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 4</div>
+    <div class="product-price">$40.00</div>
+    <button class="button" accesskey="4">Buy Now (Alt+4)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 5</div>
+    <div class="product-price">$50.00</div>
+    <button class="button" accesskey="5">Buy Now (Alt+5)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 6</div>
+    <div class="product-price">$60.00</div>
+    <button class="button" accesskey="6">Buy Now (Alt+6)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 7</div>
+    <div class="product-price">$70.00</div>
+    <button class="button" accesskey="7">Buy Now (Alt+7)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 8</div>
+    <div class="product-price">$80.00</div>
+    <button class="button" accesskey="8">Buy Now (Alt+8)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 9</div>
+    <div class="product-price">$90.00</div>
+    <button class="button" accesskey="9">Buy Now (Alt+9)</button>
+</div>
+
+<div class="card" tabindex="0">
+    <div class="product-image"></div>
+    <div class="product-title">Product 10</div>
+    <div class="product-price">$100.00</div>
+    <button class="button" accesskey="0">Buy Now (Alt+0)</button>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const cards = document.querySelectorAll('.card');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+            currentIndex = (currentIndex + 1) % cards.length;
+            cards[currentIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            cards[currentIndex].focus();
+        } else if (e.key === 'Enter') {
+            cards[currentIndex].querySelector('.button').click();
+        }
+    });
+
+    // Initialize focus on the first card
+    cards[currentIndex].focus();
+</script>
+</body>
+</html>
