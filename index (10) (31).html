@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products</title>
+<style>
+  /* Basic CSS for styling */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .menu button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .menu button:hover {
+    background-color: #0056b3;
+  }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .product-card {
+    width: 250px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .product-card img {
+    width: 100%;
+    height: auto;
+    animation: slideIn 1s ease;
+  }
+  .product-info {
+    padding: 10px;
+    text-align: center;
+  }
+
+  @keyframes slideIn {
+    0% { transform: translateY(-100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="menu">
+    <button onclick="showProducts('all')">All</button>
+    <button onclick="showProducts('shoes')">Shoes</button>
+    <button onclick="showProducts('casual')">Casual</button>
+    <button onclick="showProducts('coats')">Coats</button>
+    <button onclick="showProducts('eyewear')">Eyewear</button>
+  </div>
+  <div class="products" id="products-section">
+    <!-- Products will be displayed here dynamically -->
+  </div>
+</div>
+
+<script>
+  // Sample products data
+  const productsData = [
+    { name: 'Product 1', category: 'shoes', image: 'product1.jpg' },
+    { name: 'Product 2', category: 'casual', image: 'product2.jpg' },
+    { name: 'Product 3', category: 'coats', image: 'product3.jpg' },
+    { name: 'Product 4', category: 'eyewear', image: 'product4.jpg' },
+    { name: 'Product 5', category: 'shoes', image: 'product5.jpg' },
+    { name: 'Product 6', category: 'casual', image: 'product6.jpg' },
+    { name: 'Product 7', category: 'coats', image: 'product7.jpg' },
+    { name: 'Product 8', category: 'eyewear', image: 'product8.jpg' },
+    { name: 'Product 1', category: 'shoes', image: 'product1.jpg' },
+    { name: 'Product 2', category: 'casual', image: 'product2.jpg' },
+    { name: 'Product 3', category: 'coats', image: 'product3.jpg' },
+    { name: 'Product 4', category: 'eyewear', image: 'product4.jpg' },
+    { name: 'Product 5', category: 'shoes', image: 'product5.jpg' },
+    { name: 'Product 6', category: 'casual', image: 'product6.jpg' },
+    { name: 'Product 7', category: 'coats', image: 'product7.jpg' },
+    { name: 'Product 8', category: 'eyewear', image: 'product8.jpg' },
+    { name: 'Product 1', category: 'shoes', image: 'product1.jpg' },
+    { name: 'Product 2', category: 'casual', image: 'product2.jpg' },
+    { name: 'Product 3', category: 'coats', image: 'product3.jpg' },
+    { name: 'Product 4', category: 'eyewear', image: 'product4.jpg' },
+    { name: 'Product 5', category: 'shoes', image: 'product5.jpg' },
+    { name: 'Product 6', category: 'casual', image: 'product6.jpg' },
+    { name: 'Product 7', category: 'coats', image: 'product7.jpg' },
+    { name: 'Product 8', category: 'eyewear', image: 'product8.jpg' },
+  ];
+
+  // Function to display products based on category
+  function showProducts(category) {
+    const productsSection = document.getElementById('products-section');
+    let productsHTML = '';
+
+    if (category === 'all') {
+      productsData.forEach(product => {
+        productsHTML += `
+          <div class="product-card">
+            <img src="images/${product.image}" alt="${product.name}">
+            <div class="product-info">${product.name}</div>
+          </div>
+        `;
+      });
+    } else {
+      const filteredProducts = productsData.filter(product => product.category === category);
+      filteredProducts.forEach(product => {
+        productsHTML += `
+          <div class="product-card">
+            <img src="images/${product.image}" alt="${product.name}">
+            <div class="product-info">${product.name}</div>
+          </div>
+        `;
+      });
+    }
+
+    productsSection.innerHTML = productsHTML;
+  }
+
+  // Initially display all products
+  showProducts('all');
+</script>
+
+</body>
+</html>
